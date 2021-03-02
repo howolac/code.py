@@ -1,36 +1,28 @@
-theBoard = {
-    'top-L': ' ',
-    'top-M': ' ',
-    'top-R': ' ',
-    'mid-L': ' ',
-    'mid-M': ' ',
-    'mid-R': ' ',
-    'low-L': ' ',
-    'low-M': ' ',
-    'low-R': ' '
+allguests = {
+    'alice': {
+        'apple': 5,
+        'banana': 12
+    },
+    'Bob': {
+        'ham': 13,
+        'chicken': 99
+    },
+    'mike': {
+        'soup': 10,
+        'banana': 6
+    }
 }
 
 
-def printboard(board):
-    print(board['top-L'] + '|' + board['top-M'] + '|' + board['top-R'])
-    print('-+-+-')
-    print(board['mid-L'] + '|' + board['mid-M'] + '|' + board['mid-R'])
-    print('-+-+-')
-    print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
+def totalbrought(guest, item):
+    number = 0
+    for k, v in guest.items():
+        number = number + v.get(item, 0)
+    return number
 
 
-turn = 'X'
+print('apple=', str(totalbrought(allguests, 'apple')))
 
-for i in range(9):
-    printboard(theBoard)
-    print('turn for', 'X', 'move on which place')
+print('banana=', str(totalbrought(allguests, 'banana')))
 
-    move = input()
-    theBoard[move] = turn
-
-    if turn == 'X':
-        turn = 'O'
-    else:
-        turn = 'X'
-
-printboard(theBoard)
+print('chicken=', str(totalbrought(allguests, 'chicken')))
