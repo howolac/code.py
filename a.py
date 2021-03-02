@@ -1,13 +1,13 @@
 theBoard = {
-    'top-L': 'O',
-    'top-M': 'O',
-    'top-R': 'O',
-    'mid-L': 'X',
-    'mid-M': 'X',
+    'top-L': ' ',
+    'top-M': ' ',
+    'top-R': ' ',
+    'mid-L': ' ',
+    'mid-M': ' ',
     'mid-R': ' ',
     'low-L': ' ',
     'low-M': ' ',
-    'low-R': 'X'
+    'low-R': ' '
 }
 
 
@@ -18,5 +18,19 @@ def printboard(board):
     print('-+-+-')
     print(board['low-L'] + '|' + board['low-M'] + '|' + board['low-R'])
 
+
+turn = 'X'
+
+for i in range(9):
+    printboard(theBoard)
+    print('turn for', 'X', 'move on which place')
+
+    move = input()
+    theBoard[move] = turn
+
+    if turn == 'X':
+        turn = 'O'
+    else:
+        turn = 'X'
 
 printboard(theBoard)
