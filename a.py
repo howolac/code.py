@@ -1,28 +1,12 @@
-allguests = {
-    'alice': {
-        'apple': 5,
-        'banana': 12
-    },
-    'Bob': {
-        'ham': 13,
-        'chicken': 99
-    },
-    'mike': {
-        'soup': 10,
-        'banana': 6
-    }
-}
+item = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 
 
-def totalbrought(guest, item):
-    number = 0
-    for k, v in guest.items():
-        number = number + v.get(item, 0)
-    return number
+def displayInventory(ie):
+    count = 0
+    for k, v in ie.items():
+        print(str(v) + ' ' + k)
+        count = count + v
+    return count
 
 
-print('apple=', str(totalbrought(allguests, 'apple')))
-
-print('banana=', str(totalbrought(allguests, 'banana')))
-
-print('chicken=', str(totalbrought(allguests, 'chicken')))
+print(displayInventory(item))
