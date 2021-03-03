@@ -21,8 +21,9 @@ def isPhonenum(text):
         return True
 
 
-message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office.'
+message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office.415-555-9999'
 
 for i in range(len(message) - 11):
     if isPhonenum(message[i:i + 12]):
-        print('phonenumber found ,it\'s ' + str(message[i:i + 12]))
+        print('phonenumber found , it\'s ' + str(message[i:i + 12]))
+print('done')
