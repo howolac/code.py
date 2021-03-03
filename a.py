@@ -1,5 +1,6 @@
 #！python3
-#美国或加拿大的电话号码判断
+#phone number found
+
 
 def isPhonenum(text):
     if len(text) != 12:
@@ -12,7 +13,7 @@ def isPhonenum(text):
         return False
 
     for i in range(4, 7):
-        if not text[i].isdecimal() :
+        if not text[i].isdecimal():
             return False
     if text[7] != '-':
         return False
@@ -20,7 +21,8 @@ def isPhonenum(text):
         return True
 
 
-print('415-555-4242 is a phone number:')
-print(isPhonenum('495-555-4242'))
-print('Moshi moshi is a phone number:')
-print(isPhonenum('Moshi moshi'))
+message = 'Call me at 415-555-1011 tomorrow. 415-555-9999 is my office.'
+
+for i in range(len(message) - 11):
+    if isPhonenum(message[i:i + 12]):
+        print('phonenumber found ,it\'s ' + str(message[i:i + 12]))
