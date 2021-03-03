@@ -1,27 +1,24 @@
 #！python3
 ''' 
-一个口令小脚本
+在每一行之前添加星号的小脚本
 
 '''
 
-import sys, pyperclip
+import pyperclip
 
-passwd = {
-    'email': 'F7minlBDDuvMJuxESSKHFhTxFtjVB6',
-    'blog': 'VmALvQyKAxiVH5G8v01if1MLZF3sdt',
-    'luggage': '12345'
-}
 
-if len(sys.argv) < 2:
-    print('Usage: python a.py [account] - copy account password')
-    sys.exit()
+def add_star(a):
+    a = a.split('\n')
+    for i in range(len(a)):
+        a[i] = '*' + a[i]
+    a = '\n'.join(a)
+    return a
 
-account = sys.argv[1]
 
-if account in passwd:
-    print('the passwd is' + ' ' + passwd[account])
-    pyperclip.copy(passwd[account])
-    print('the account' 'is' + ' ' + account)
+a = pyperclip.paste()
 
-else:
-    print('not match')
+a = add_star(a)
+
+pyperclip.copy(a)
+
+print(pyperclip.paste())
