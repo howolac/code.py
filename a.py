@@ -1,13 +1,10 @@
-while True:
-    print('enter your age:')
-    age = input()
-    if age.isdecimal():
-        break
-    print('please enter your ager:')
+def picnic(a, lw, rw):
+    print('Picnic items'.center(lw + rw, '='))
+    for k, v in a.items():
+        print(k.ljust(lw, '.') + ' ' + str(v).ljust(rw))
 
-while True:
-    print('Please select a new passwd (alpha and number only):')
-    passwd=input()
-    if passwd.isalnum():
-            break
-    print('passwd can only include letters and numbers')
+
+picnicItems = {'sandwiches': 4, 'apples': 12, 'cups': 4, 'cookies': 8000}
+
+picnic(picnicItems, 10, 10)
+picnic(picnicItems, 20, 10)
