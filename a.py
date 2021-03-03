@@ -1,15 +1,26 @@
 #！python3
+#美国或加拿大的电话号码判断
 
-tableData = [['apples', 'oranges', 'cherries', 'banana'],
-             ['Alice', 'Bob', 'Carol', 'David'],
-             ['dogs', 'cats', 'moose', 'goose']]
+def isPhonenum(text):
+    if len(text) != 12:
+        return False
+
+    for i in range(0, 3):
+        if not text[i].isdecimal():
+            return False
+    if text[3] != '-':
+        return False
+
+    for i in range(4, 7):
+        if not text[i].isdecimal() :
+            return False
+    if text[7] != '-':
+        return False
+    else:
+        return True
 
 
-def printTab(a, long):
-    for i in range(len(a[0])):
-        for j in range(len(a)):
-            print(a[j][i].rjust(long), end='')
-        print('\n')
-
-
-printTab(tableData, 10)
+print('415-555-4242 is a phone number:')
+print(isPhonenum('495-555-4242'))
+print('Moshi moshi is a phone number:')
+print(isPhonenum('Moshi moshi'))
