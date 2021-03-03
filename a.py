@@ -1,24 +1,15 @@
 #！python3
-''' 
-在每一行之前添加星号的小脚本
 
-'''
-
-import pyperclip
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+             ['Alice', 'Bob', 'Carol', 'David'],
+             ['dogs', 'cats', 'moose', 'goose']]
 
 
-def add_star(a):
-    a = a.split('\n')
-    for i in range(len(a)):
-        a[i] = '*' + a[i]
-    a = '\n'.join(a)
-    return a
+def printTab(a, long):
+    for i in range(len(a[0])):
+        for j in range(len(a)):
+            print(a[j][i].rjust(long), end='')
+        print('\n')
 
 
-a = pyperclip.paste()
-
-a = add_star(a)
-
-pyperclip.copy(a)
-
-print(pyperclip.paste())
+printTab(tableData, 10)
