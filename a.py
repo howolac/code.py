@@ -1,14 +1,10 @@
 #！python3
-#读写本地文件
+#去掉字符串每行末尾的\n换行符
 
-import os
+import pyperclip, re
 
-os.chdir('c:\\users\\name\\desktop')
+t = pyperclip.paste()
+regex = re.compile(r'[\n]')
+regex = regex.sub('', t)
 
-baconFile = open('bacon.txt', 'w')
-print(baconFile.write('Hellso,File\n'))
-baconFile.close()
-
-baconFile = open('bacon.txt', 'a')
-print(baconFile.write('Helslo,Fdile\n'))
-baconFile.close()
+print(t)
