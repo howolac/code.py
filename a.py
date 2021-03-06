@@ -35,7 +35,7 @@ for i in phontregext.findall(text):
 
 #这里简化只写一个
 if len(emailmatch) > 0:
-    pyperclip.copy('\n'.join(emailmatch))
+    pyperclip.copy('\n'.join(emailmatch) + ''.join(phoneamtch))
     print('emails:')
     print('\n'.join(emailmatch))
     print('phonenums:')
