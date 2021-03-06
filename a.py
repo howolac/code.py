@@ -1,20 +1,15 @@
 #！python3
 #正则表达式
-#匹配短句
-import re, pyperclip
+#强口令检测
 
-regex = re.compile(
-    r'((alice|Bob|carol)\s(eats|pets|throws)\s(apple|cats|baseball))',
-    re.IGNORECASE)
-print(
-    regex.findall('''
- 'Alice eats apples.'
- 'Bob pets cats.'
- 'Carol throws baseballs.'
- 'Alice throws Apples.'
- 'BOB EATS CATS.'
-但不匹配：
- 'RoboCop eats apples.'
- 'ALICE THROWS FOOTBALLS.'
- 'Carol eats 7 cats.'
-'''))
+import re
+
+a = '1236aZa789'
+
+try:
+    re.compile(r'[a-z]').search(a).group()
+    re.compile(r'[A-Z]').search(a).group()
+    re.compile(r'[0-9]').search(a).group()
+    print('强字符串')
+except:
+    print('not')
