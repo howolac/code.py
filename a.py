@@ -1,27 +1,17 @@
 #！python3
-#项目：保存剪切板的内容并提供查询
-#用法：三种输入模式：a.py save （想要的变量名）和a.py （要读取的变量名）
-#和a.py list 所有存入的变量
-#读取list的时候出现问题！！！----lower后面加()！！
-#先list再str-----pyperclip.copy(str(list(data.keys())))
-import pyperclip, shelve, os, sys
+#项目：疯狂填词
+#用法：根据程序提示，对一个语句中的一些词进行替换
 
-#切换到桌面
-os.chdir('c:\\users\\howolac\\desktop')
+a = '''The ADJECTIVE panda walked to the NOUN and then VERB. A nearby NOUN was
+unaffected by these events.'''
 
-data = shelve.open('data')
+#分割字符串
+a = a.split(' ')
 
-#根据输入参数判断用户想进行的操作，第一种，两参数，后一个为变量名
-if len(sys.argv) == 3 and sys.argv[1].lower() == 'save':
-    data[sys.argv[2]] = pyperclip.paste()
-
-elif len(sys.argv) == 2:
-    #如果是list就list
-    if sys.argv[1].lower() == 'list':
-        pyperclip.copy(str(list(data.keys())))
-
-    #如果是关键字就关键字
-    elif sys.argv[1] in data.keys():
-        pyperclip.copy(str(data[sys.argv[1]]))
-
-data.close()
+#找到那些地方，提示用户输入以替换
+for i in range(len(a)):
+    if a[i] == 'ADJECTIVE' or a[i] == 'NOUN' or a[i] == 'ADVERB' or a[
+            i] == 'VERB':
+        print('Enter an ' + a[i].lower())
+        a[i] = input()
+print(' '.join(a))
