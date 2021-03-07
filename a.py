@@ -1,32 +1,17 @@
 #！python3
-#项目：打开文件夹中所有的.txt 文件，查找匹配用户提供的正则表达式的所有行。
-#
-#用法：txt文件名字中间有一个空格的不行→可以！！！
+#遍历目录树
+#usage：直接运行，浏览当前目录下所有且目录的目录所有且。。
 
-import os, re
+import os
 
-#改变当前路径
-path = 'path'
-os.chdir(path)
+os.chdir('D:\\GAME')
 
-#遍历文件列表
-a = os.listdir()
-#创建一个找txt文件的正则表达式
-regex = re.compile(r'字符串')
-
-for i in range(len(a)):
-    #判断是否log文件
-    if a[i][-1] == 't' and a[i][-2] == 'x' and a[i][-3] == 't':
-        #打开文件
-        file = open(a[i], 'r', encoding='utf8')
-        #便利每个文件的每一行
-        b = file.readlines()
-
-        for j in range(len(b)):
-            #找出这所有有字符串的行，并打印出来
-            try:
-                regex.search(b[j]).group()
-                print(b[j])
-            except:
-                continue
-        file.close()
+#读取当前目录字符串，子文件夹name列表，其它文件name列表
+for foderName, subfolders, fileNames in os.walk(os.getcwd()):
+    #打印出：说明：当前目录
+    print('current folder is : ' + foderName)
+    #遍历打印出：当前目录的文件路径+‘：’+文件
+    for subfolder in subfolders:
+        print(foderName + 'sufolders :' + subfolder)
+    for fileName in fileNames:
+        print(foderName + 'file :' + fileName)
