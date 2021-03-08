@@ -1,19 +1,21 @@
 #!python
 
-#项目：遍历一个目录树，查找特定扩展的文件（.txt），将它们拷贝到一个新的文件夹
+#项目：计算某文件夹下所有大于1gb文件
 
 #usage：向path传入目录就行了
+#传入'c:\\users\\用户'会出现类似：
+#\Application Data\\Application Data\\Application Data 找不到的错误
 
-import os, shutil
+import os
 
-path_source = 'D:\\Program Files'
-path_direction = 'C:\\users\\howolac\\desktop'
-
-#判断是不是
-
-for folder, sub_folders, file_names in os.walk(path_source):
-    #判断文件是不是.dat结尾的,并把他们拷贝到桌面
+#path
+path = 'D:\\'
+#遍历目录树，先找单独大文件的，再找大文件夹的
+for folder, sub_folders, file_names in os.walk(path):
     for i in file_names:
-        if i.endswith('.dat'):
-            shutil.copy(os.path.join(os.path.abspath(folder), i), path_direction)
-            print('find ' + i)
+        try:
+            if os.path.getsize(os.path.join(folder, i)) > 10000000000:
+                print(i)
+        except:
+            print('not')
+            break
