@@ -15,9 +15,13 @@ logging.debug('Start debug')
 import os
 logging.info('import is working')
 
-#for语句,遍历到10
-for i in range(13):
-    print('i = ' + str(i))
-    #触发AssertionError
-    assert i < 10, str(i) + 'must be <10'
-    i += 1
+#列表
+eggs = ['10a', '1']
+bacon = ['1', '10A']
+
+#切换一下大小写：
+eggs = (('***'.join(eggs)).lower()).split('***')
+bacon = (('***'.join(bacon)).lower()).split('***')
+
+#令彼此不相同!
+assert eggs == bacon, 'eggs and bacon can\'t be same'
