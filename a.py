@@ -1,16 +1,13 @@
 #!python
 
-import os, openpyxl
-from openpyxl.utils import get_column_letter, column_index_from_string
+import requests
 
-os.chdir('c:\\users\\howolac\\desktop')
 
-wb = openpyxl.load_workbook('1.xlsx')
-sheet1 = wb.get_sheet_by_name('Sheet1')
+def download(url):
+    print('Downloading : ', url)
+    html = requests.get(url).text
+    #500-600的错误重试:13
+    return html
 
-#tuple(sheet['A1':'C3'])
-#遍历所有行
-for j in sheet1['A1':'C7']:
-    for i in j:
-        print(i.coordinate, i.value)
-    print('---------------------------end of row---------------------------')
+
+print(download('https://www.baidu.com/s?ie=UTF-8&wd=urllib'))
